@@ -3,10 +3,12 @@ package roomescape.support;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Map;
+import org.springframework.boot.test.context.TestComponent;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import roomescape.theme.application.dto.ThemeCreateCommand;
 
+@TestComponent
 public class TestDataHelper {
 
     private final JdbcTemplate jdbcTemplate;

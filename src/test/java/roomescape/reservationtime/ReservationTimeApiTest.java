@@ -10,33 +10,18 @@ import io.restassured.http.ContentType;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Map;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.server.LocalServerPort;
-import org.springframework.jdbc.core.JdbcTemplate;
 import roomescape.fixture.ThemeFixture;
+import roomescape.support.ApiTest;
 import roomescape.support.TestDataHelper;
 
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ApiTest
 class ReservationTimeApiTest {
 
-    @LocalServerPort
-    private int port;
-
     @Autowired
-    private JdbcTemplate jdbcTemplate;
-
     private TestDataHelper testHelper;
-
-    @BeforeEach
-    void setUp() {
-        RestAssured.port = port;
-        testHelper = new TestDataHelper(jdbcTemplate);
-        testHelper.clearDatabase();
-    }
 
     @DisplayName("예약 시간 추가 API를 테스트합니다.")
     @Test
